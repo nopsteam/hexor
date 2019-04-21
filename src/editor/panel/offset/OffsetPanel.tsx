@@ -1,5 +1,5 @@
-import React, { CSSProperties } from 'react'
-import styled from 'styled-components';
+import React, { CSSProperties } from "react";
+import styled from "styled-components";
 
 const OffsetContainer = styled.div`
     padding: 0 10px
@@ -8,11 +8,11 @@ const OffsetContainer = styled.div`
     text-align: right
     display: inline-block
     vertical-align: top
-`
+`;
 
-export const OffsetPanel = () => (
-    <OffsetContainer>
-        <div>00000000</div>
-        <div>00000010</div>
-    </OffsetContainer>
-)
+export const OffsetPanel = (): React.ReactElement => (
+  <OffsetContainer>
+    <div>00000000</div>
+    <div>00000010</div>
+  </OffsetContainer>
+);
