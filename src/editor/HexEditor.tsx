@@ -15,17 +15,22 @@ const HexEditorContainer = styled.div`
     background: #252526
 `
 
-const hexStringFormat = 16
-const bitsPerByte = 8
+const formatOfStringsInHex = 16
+const offsetSize = 8
 const bitsCountToNexLine = 16
+const arrayInitializer = 0
+const leftBytesPadding = '0'
+
+const getOffsetSizeFromBuffer = (data: Buffer) => 
+    Math.ceil(data.byteLength / offsetSize)
 
 const generateHexLines = (data:Buffer) => 
-    Array(Math.ceil(data || Buffer.from(' ') ? data.byteLength / bitsPerByte : 0))
-        .fill(0)
-        .map((x, y) => (x + (y * bitsCountToNexLine))
-            .toString(hexStringFormat)
+    Array(getOffsetSizeFromBuffer(data))
+        .fill(arrayInitializer)
+        .map((x: number, y: number) => (x + (y * bitsCountToNexLine))
+            .toString(formatOfStringsInHex)
             .toUpperCase()
-            .padStart(bitsPerByte, '0'))
+            .padStart(offsetSize, leftBytesPadding))
 
 export const HexEditor = () => {
     const lines = generateHexLines(hexThing)   
