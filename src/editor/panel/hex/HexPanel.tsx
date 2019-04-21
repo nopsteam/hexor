@@ -1,12 +1,12 @@
-import React, { CSSProperties } from "react";
-import { HexCell } from "./HexCell";
-import styled from "styled-components";
+import React, { CSSProperties } from 'react'
+import { HexCell } from './HexCell'
+import styled from 'styled-components'
 
 const HexContainer = styled.div`
     display: inline-block
     vertical-align: top
     padding: 0 10px
-`;
+`
 
 export const HexPanel = (): React.ReactElement => (
   <HexContainer>
@@ -47,4 +47,4 @@ export const HexPanel = (): React.ReactElement => (
       <HexCell>00</HexCell>
     </div>
   </HexContainer>
-);
+)

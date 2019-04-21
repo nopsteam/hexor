@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import "./App.css";
-import { Editor } from "./editor";
+import React, { Component } from 'react'
+import './App.css'
+import { Editor } from './editor'
 
 class App extends Component {
   public render(): React.ReactNode {
@@ -10,8 +10,8 @@ class App extends Component {
           <Editor />
         </header>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App

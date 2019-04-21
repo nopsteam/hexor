@@ -1,13 +1,13 @@
-import React, { CSSProperties } from "react";
-import { TextCell } from "./TextCell";
-import styled from "styled-components";
+import React, { CSSProperties } from 'react'
+import { TextCell } from './TextCell'
+import styled from 'styled-components'
 
 const TextContainer = styled.div`
     padding: 0 20px 0 5px
     color: #222
     display: inline-block
     vertical-align: top
-`;
+`
 
 export const TextPanel = (): React.ReactElement => (
   <TextContainer>
@@ -48,4 +48,4 @@ export const TextPanel = (): React.ReactElement => (
       <TextCell>.</TextCell>
     </div>
   </TextContainer>
-);
+)
