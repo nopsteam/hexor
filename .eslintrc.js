@@ -5,9 +5,16 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
   ],
   rules: {
+    "quotes": ["error", "single"],
     "semi": ["error", "never"],
     "indent": ["error", 2],
     "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/member-delimiter-style": ["error", {
+      "multiline": {
+        "delimiter": "none",
+        "requireLast": false
+      },
+    }],
   },
   parser: "@typescript-eslint/parser",
   parserOptions: {
