@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react'
+import React from 'react'
 import styled from 'styled-components';
 
 const OffsetContainer = styled.div`
@@ -10,9 +10,8 @@ const OffsetContainer = styled.div`
     vertical-align: top
 `
 
-export const OffsetPanel = () => (
+export const OffsetPanel = (props: { lines: string[] }) => (
     <OffsetContainer>
-        <div>00000000</div>
-        <div>00000010</div>
+        {props.lines.map(x => (<div>{x}</div>))}
     </OffsetContainer>
 )
