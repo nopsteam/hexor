@@ -18,7 +18,6 @@ module.exports = {
     },
     useJSXTextNode: true,
     project: "./tsconfig.json",
-    extraFileExtensions: [".vue"]
   },
   plugins: [
     "@typescript-eslint",
