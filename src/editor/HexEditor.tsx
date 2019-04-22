@@ -1,6 +1,7 @@
 import React from 'react'
 import { OffsetPanel, HexPanel, TextPanel } from './panel'
 import styled from 'styled-components'
+import hexThing from './neo.arch.dialog'
 
 const HexEditorContainer = styled.div`
     position: absolute
@@ -14,10 +15,33 @@ const HexEditorContainer = styled.div`
     background: #252526
 `
 
-export const HexEditor = (): React.ReactElement => (
-  <HexEditorContainer>
-    <OffsetPanel />
-    <HexPanel />
-    <TextPanel />
-  </HexEditorContainer>
-)
+const formatOfStringsInHex = 16
+const offsetSize = 8
+const bitsCountToNexLine = 16
+const arrayInitializer = 0
+const leftBytesPadding = '0'
+
+const getOffsetSizeFromBuffer = (data: Buffer): number =>
+  Math.ceil(data.byteLength / offsetSize)
+
+const generateHexLines = (data: Buffer): string[] =>
+  Array(getOffsetSizeFromBuffer(data))
+    .fill(arrayInitializer)
+    .map(
+      (x: number, y: number): string =>
+        (x + y * bitsCountToNexLine)
+          .toString(formatOfStringsInHex)
+          .toUpperCase()
+          .padStart(offsetSize, leftBytesPadding)
+    )
+
+export const HexEditor = (): React.ReactElement => {
+  const lines = generateHexLines(hexThing)
+  return (
+    <HexEditorContainer>
+      <OffsetPanel lines={lines} />
+      <HexPanel />
+      <TextPanel />
+    </HexEditorContainer>
+  )
+}
