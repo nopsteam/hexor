@@ -13,7 +13,7 @@ export const OffsetPanel = (props: { lines: string[] }): React.ReactElement => (
   <OffsetContainer>
     {props.lines.map(
       (x): JSX.Element => (
-        <div>{x}</div>
+        <div key={x}>{x}</div>
       )
     )}
   </OffsetContainer>
