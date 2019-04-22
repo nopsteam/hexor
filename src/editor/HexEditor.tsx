@@ -21,10 +21,11 @@ const bitsCountToNexLine = 16
 const arrayInitializer = 0
 const leftBytesPadding = '0'
 
-const getOffsetSizeFromBuffer = (data: Buffer) =>
+
+const getOffsetSizeFromBuffer = (data: Buffer): number =>
     Math.ceil(data.byteLength / offsetSize)
 
-const generateHexLines = (data:Buffer): string[] =>
+const generateHexLines = (data:Buffer) =>
     Array(getOffsetSizeFromBuffer(data))
         .fill(arrayInitializer)
         .map((x: number, y: number) => (x + (y * bitsCountToNexLine))
