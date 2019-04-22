@@ -1,6 +1,6 @@
 import React from 'react'
 import { HexEditor } from './HexEditor'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const EditorContainer = styled.div`
     position: absolute
@@ -14,8 +14,8 @@ const EditorContainer = styled.div`
     background: #fff
 `
 
-export const Editor = () => (
-    <EditorContainer>
-        <HexEditor></HexEditor>
-    </EditorContainer>
+export const Editor = (): React.ReactElement => (
+  <EditorContainer>
+    <HexEditor />
+  </EditorContainer>
 )

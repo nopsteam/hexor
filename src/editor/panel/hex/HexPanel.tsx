@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react'
 import { HexCell } from './HexCell'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const HexContainer = styled.div`
     display: inline-block
@@ -8,43 +8,43 @@ const HexContainer = styled.div`
     padding: 0 10px
 `
 
-export const HexPanel = () => (
-    <HexContainer>
-        <div>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-        </div>
-        <div>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-            <HexCell>00</HexCell>
-        </div>
-    </HexContainer>
+export const HexPanel = (): React.ReactElement => (
+  <HexContainer>
+    <div>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+    </div>
+    <div>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+      <HexCell>00</HexCell>
+    </div>
+  </HexContainer>
 )

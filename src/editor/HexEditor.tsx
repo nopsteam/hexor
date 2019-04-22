@@ -1,6 +1,6 @@
 import React from 'react'
 import { OffsetPanel, HexPanel, TextPanel } from './panel'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const HexEditorContainer = styled.div`
     position: absolute
@@ -14,10 +14,10 @@ const HexEditorContainer = styled.div`
     background: #252526
 `
 
-export const HexEditor = () => (
-    <HexEditorContainer>
-        <OffsetPanel></OffsetPanel>
-        <HexPanel></HexPanel>
-        <TextPanel></TextPanel>
-    </HexEditorContainer>
+export const HexEditor = (): React.ReactElement => (
+  <HexEditorContainer>
+    <OffsetPanel />
+    <HexPanel />
+    <TextPanel />
+  </HexEditorContainer>
 )
