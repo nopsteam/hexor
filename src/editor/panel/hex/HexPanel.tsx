@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react'
+import React from 'react'
 import { HexCell } from './HexCell'
 import styled from 'styled-components'
 

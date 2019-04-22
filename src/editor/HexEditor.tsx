@@ -21,25 +21,27 @@ const bitsCountToNexLine = 16
 const arrayInitializer = 0
 const leftBytesPadding = '0'
 
-
 const getOffsetSizeFromBuffer = (data: Buffer): number =>
-    Math.ceil(data.byteLength / offsetSize)
+  Math.ceil(data.byteLength / offsetSize)
 
-const generateHexLines = (data:Buffer) =>
-    Array(getOffsetSizeFromBuffer(data))
-        .fill(arrayInitializer)
-        .map((x: number, y: number) => (x + (y * bitsCountToNexLine))
-            .toString(formatOfStringsInHex)
-            .toUpperCase()
-            .padStart(offsetSize, leftBytesPadding))
+const generateHexLines = (data: Buffer): string[] =>
+  Array(getOffsetSizeFromBuffer(data))
+    .fill(arrayInitializer)
+    .map(
+      (x: number, y: number): string =>
+        (x + y * bitsCountToNexLine)
+          .toString(formatOfStringsInHex)
+          .toUpperCase()
+          .padStart(offsetSize, leftBytesPadding)
+    )
 
 export const HexEditor = (): React.ReactElement => {
-    const lines = generateHexLines(hexThing)
-    return (
-        <HexEditorContainer>
-            <OffsetPanel lines={lines}></OffsetPanel>
-            <HexPanel></HexPanel>
-            <TextPanel></TextPanel>
-        </HexEditorContainer>
-    )
+  const lines = generateHexLines(hexThing)
+  return (
+    <HexEditorContainer>
+      <OffsetPanel lines={lines} />
+      <HexPanel />
+      <TextPanel />
+    </HexEditorContainer>
+  )
 }

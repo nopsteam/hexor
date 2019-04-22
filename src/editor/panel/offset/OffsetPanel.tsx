@@ -10,7 +10,11 @@ const OffsetContainer = styled.div`
     vertical-align: top
 `
 export const OffsetPanel = (props: { lines: string[] }): React.ReactElement => (
-    <OffsetContainer>
-        {props.lines.map(x => (<div>{x}</div>))}
-    </OffsetContainer>
+  <OffsetContainer>
+    {props.lines.map(
+      (x): JSX.Element => (
+        <div>{x}</div>
+      )
+    )}
+  </OffsetContainer>
 )
