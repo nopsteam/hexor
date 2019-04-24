@@ -26,6 +26,15 @@ const splitInChunksOfTwo = /.{2}/g
 const getOffsetSizeFromBuffer = (data: Buffer): number =>
   Math.ceil(data.byteLength / offsetSize)
 
+export const chunkString = (text: string, chunkSize: number): string[] => {
+  const results: string[] = []
+
+  for (let i = 0; i < text.length; i += chunkSize)
+    results.push(text.slice(i, i + chunkSize))
+
+  return splitEvery(chunkSize, text)
+}
+
 const generateOffsetLines = (data: Buffer): string[] =>
   Array(getOffsetSizeFromBuffer(data))
     .fill(arrayInitializer)
@@ -38,9 +47,8 @@ const generateOffsetLines = (data: Buffer): string[] =>
     )
 
 export const generateHexLines = (data: Buffer): string[][] =>
-  splitEvery(formatOfStringsInHex, data.toString('hex').toUpperCase()).map(
-    (x: string): RegExpMatchArray | null => x.match(splitInChunksOfTwo)
-  ) as string[][]
+  splitEvery(formatOfStringsInHex, data.toString('hex').toUpperCase())
+    .map((x: string): RegExpMatchArray | null => x.match(splitInChunksOfTwo)) as string[][]
 
 export const HexEditor = (): React.ReactElement => {
   const offsetLines = generateOffsetLines(hexThing)
