@@ -9,43 +9,18 @@ const TextContainer = styled.div`
     vertical-align: top
 `
 
-export const TextPanel = (): React.ReactElement => (
+export const TextPanel = (props: { lines: string[][] }): React.ReactElement => (
   <TextContainer>
-    <div>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-    </div>
-    <div>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-    </div>
+    {props.lines.map(
+      (x: string[], firstLevel: number): JSX.Element => (
+        <div key={firstLevel}>
+          {x.map(
+            (y: string, secondLevel: number): JSX.Element => (
+              <TextCell key={`${firstLevel}-${secondLevel}`}>{y}</TextCell>
+            )
+          )}
+        </div>
+      )
+    )}
   </TextContainer>
 )

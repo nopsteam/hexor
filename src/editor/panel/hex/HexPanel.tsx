@@ -8,43 +8,18 @@ const HexContainer = styled.div`
     padding: 0 10px
 `
 
-export const HexPanel = (): React.ReactElement => (
+export const HexPanel = (props: { lines: string[][] }): React.ReactElement => (
   <HexContainer>
-    <div>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-    </div>
-    <div>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-    </div>
+    {props.lines.map(
+      (x: string[], firstLevel: number): JSX.Element => (
+        <div key={firstLevel}>
+          {x.map(
+            (y: string, secondLevel: number): JSX.Element => (
+              <HexCell key={`${firstLevel}-${secondLevel}`}>{y}</HexCell>
+            )
+          )}
+        </div>
+      )
+    )}
   </HexContainer>
 )

@@ -20,11 +20,21 @@ const offsetSize = 8
 const bitsCountToNexLine = 16
 const arrayInitializer = 0
 const leftBytesPadding = '0'
+const splitInChunksOfTwo = /.{2}/g
 
 const getOffsetSizeFromBuffer = (data: Buffer): number =>
   Math.ceil(data.byteLength / offsetSize)
 
-const generateHexLines = (data: Buffer): string[] =>
+const chunkString = (text: string, chunkSize: number): string[] => {
+  const results: string[] = []
+
+  for (let i = 0; i < text.length; i += chunkSize)
+    results.push(text.slice(i, i + chunkSize))
+
+  return results
+}
+
+const generateOffsetLines = (data: Buffer): string[] =>
   Array(getOffsetSizeFromBuffer(data))
     .fill(arrayInitializer)
     .map(
@@ -35,13 +45,28 @@ const generateHexLines = (data: Buffer): string[] =>
           .padStart(offsetSize, leftBytesPadding)
     )
 
+const generateHexLines = (data: Buffer): string[][] =>
+  chunkString(data.toString('hex').toUpperCase(), formatOfStringsInHex).map(
+    (x: string): RegExpMatchArray | null => x.match(splitInChunksOfTwo)
+  ) as string[][]
+
 export const HexEditor = (): React.ReactElement => {
-  const lines = generateHexLines(hexThing)
+  const offsetLines = generateOffsetLines(hexThing)
+  const hexLines = generateHexLines(hexThing)
+
+  const asciiRepresentationOfHexLines = hexLines.map(
+    (x: string[]): string[] =>
+      x.map(
+        (y: string): string =>
+          String.fromCharCode(parseInt(y, formatOfStringsInHex))
+      )
+  )
+
   return (
     <HexEditorContainer>
-      <OffsetPanel lines={lines} />
-      <HexPanel />
-      <TextPanel />
+      <OffsetPanel lines={offsetLines} />
+      <HexPanel lines={hexLines} />
+      <TextPanel lines={asciiRepresentationOfHexLines} />
     </HexEditorContainer>
   )
 }
