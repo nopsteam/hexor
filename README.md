@@ -1,4 +1,6 @@
-![alt text](https://i.ibb.co/8rZz6mT/hexor-logo.png)
+<div align="center">
+    <img alt="cross platform hex editor" src="https://i.ibb.co/8rZz6mT/hexor-logo.png" height="344px" />
+</div>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
