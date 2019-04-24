@@ -2,6 +2,7 @@ import React from 'react'
 import { OffsetPanel, HexPanel, TextPanel } from './panel'
 import styled from 'styled-components'
 import hexThing from './neo.arch.dialog'
+import logo from '../pirate_flag.png'
 
 const HexEditorContainer = styled.div`
     position: absolute
@@ -13,6 +14,20 @@ const HexEditorContainer = styled.div`
     overflow: hidden
     outline: none
     background: #252526
+`
+
+const Logo = styled.div`
+    position: absolute
+    right: 20px
+    bottom: 20px
+    width: 100px
+    height: 100px
+`
+
+const LogoImg = styled.img`
+    width: 100%
+    max-width: 145px
+    height: auto
 `
 
 const formatOfStringsInHex = 16
@@ -42,6 +57,9 @@ export const HexEditor = (): React.ReactElement => {
       <OffsetPanel lines={lines} />
       <HexPanel />
       <TextPanel />
+      <Logo>
+        <LogoImg src={logo} alt="hexor"/>
+      </Logo>
     </HexEditorContainer>
   )
 }
