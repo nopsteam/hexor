@@ -1,5 +1,4 @@
-# hexor
-A cross platform hex editor
+![alt text](https://i.ibb.co/8rZz6mT/hexor-logo.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
