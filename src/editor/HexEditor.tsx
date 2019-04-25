@@ -3,15 +3,34 @@ import { splitEvery } from 'ramda'
 import { OffsetPanel, HexPanel, TextPanel } from './panel'
 import styled from 'styled-components'
 import hexThing from './neo.arch.dialog'
+import logo from '../pirate_flag.png'
 
 const HexEditorContainer = styled.div`
-    background: #252526
-    hite-space: nowrap
-    left: 0
-    right: 0
-    top: 0
-    bottom: 0
-    outline: none
+  background: #252526
+  white-space: nowrap
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  outline: none
+`
+
+const Logo = styled.div`
+  display: inline;
+  float: right;
+  width: 100px;
+  height: 100px;
+  bottom: 0;
+  margin-top: 69px;
+`
+
+const LogoImg = styled.img`
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  bottom: 20px;
+  right: 20px;
+  text-align: center;
 `
 
 const formatOfStringsInHex = 16
@@ -57,6 +76,9 @@ export const HexEditor = (): React.ReactElement => {
       <OffsetPanel lines={offsetLines} />
       <HexPanel lines={hexLines} />
       <TextPanel lines={asciiRepresentationOfHexLines} />
+      <Logo>
+        <LogoImg src={logo} alt="hexor" />
+      </Logo>
     </HexEditorContainer>
   )
 }
