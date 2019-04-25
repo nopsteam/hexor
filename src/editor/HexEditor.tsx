@@ -5,15 +5,13 @@ import styled from 'styled-components'
 import hexThing from './neo.arch.dialog'
 
 const HexEditorContainer = styled.div`
-    position: absolute
-    white-space: nowrap
+    background: #252526
+    hite-space: nowrap
     left: 0
     right: 0
     top: 0
     bottom: 0
-    overflow: hidden
     outline: none
-    background: #252526
 `
 
 const formatOfStringsInHex = 16
