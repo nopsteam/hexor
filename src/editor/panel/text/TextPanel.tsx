@@ -15,11 +15,11 @@ const TextDivAligned = styled.div`
 export const TextPanel = (props: { lines: string[][] }): React.ReactElement => (
   <TextContainer>
     {props.lines.map(
-      (x: string[], firstLevel: number): JSX.Element => (
+      (line: string[], firstLevel: number): JSX.Element => (
         <TextDivAligned key={firstLevel}>
-          {x.map(
-            (y: string, secondLevel: number): JSX.Element => (
-              <TextCell key={`${firstLevel}-${secondLevel}`}>{y}</TextCell>
+          {line.map(
+            (column: string, secondLevel: number): JSX.Element => (
+              <TextCell key={`${firstLevel}-${secondLevel}`}>{column}</TextCell>
             )
           )}
         </TextDivAligned>

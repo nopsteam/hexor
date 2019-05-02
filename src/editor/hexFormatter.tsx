@@ -26,9 +26,9 @@ export const generateOffsetLines = (data: Buffer): string[] =>
   Array(getOffsetSizeFromBuffer(data, bitsCountToNexLine))
     .fill(arrayInitializer)
     .map(
-      (x: number, y: number): string =>
+      (value: number, index: number): string =>
         generateOffsetLine(
-          x + y * bitsCountToNexLine,
+          value + index * bitsCountToNexLine,
           offsetLength,
           charForLeftPadding,
           formatOfStringsInHex
@@ -40,17 +40,18 @@ export const generateHexLines = (data: Buffer): string[][] =>
     representationOf64bitsInBytes,
     data.toString('hex').toUpperCase()
   ).map(
-    (x: string): RegExpMatchArray | null => x.match(splitInChunksOfTwo)
+    (hexLine: string): RegExpMatchArray | null =>
+      hexLine.match(splitInChunksOfTwo)
   ) as string[][]
 
 export const generateAsciiRepresentationOfHexLines = (
   data: Buffer
 ): string[][] =>
   generateHexLines(data).map(
-    (x: string[]): string[] =>
-      x.map(
-        (y: string): string =>
-          String.fromCharCode(parseInt(y, formatOfStringsInHex))
+    (line: string[]): string[] =>
+      line.map(
+        (column: string): string =>
+          String.fromCharCode(parseInt(column, formatOfStringsInHex))
       )
   )
 

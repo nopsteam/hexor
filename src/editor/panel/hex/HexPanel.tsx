@@ -15,11 +15,11 @@ const HexDivAligned = styled.div`
 export const HexPanel = (props: { lines: string[][] }): React.ReactElement => (
   <HexContainer>
     {props.lines.map(
-      (x: string[], firstLevel: number): JSX.Element => (
+      (line: string[], firstLevel: number): JSX.Element => (
         <HexDivAligned key={firstLevel}>
-          {x.map(
-            (y: string, secondLevel: number): JSX.Element => (
-              <HexCell key={`${firstLevel}-${secondLevel}`}>{y}</HexCell>
+          {line.map(
+            (column: string, secondLevel: number): JSX.Element => (
+              <HexCell key={`${firstLevel}-${secondLevel}`}>{column}</HexCell>
             )
           )}
         </HexDivAligned>

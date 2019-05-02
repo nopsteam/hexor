@@ -18,9 +18,9 @@ const OffsetAlignedDiv = styled.div`
 export const OffsetPanel = (props: { lines: string[] }): React.ReactElement => (
   <OffsetContainer>
     {props.lines.map(
-      (x): JSX.Element => (
-        <div key={`div-${x}`}>
-          <OffsetAlignedDiv key={x}>{x}</OffsetAlignedDiv>
+      (line): JSX.Element => (
+        <div key={`div-${line}`}>
+          <OffsetAlignedDiv key={line}>{line}</OffsetAlignedDiv>
         </div>
       )
     )}
