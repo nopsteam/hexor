@@ -11,8 +11,7 @@ const OffsetContainer = styled.div`
 `
 
 const OffsetAlignedDiv = styled.div`
-  font-family: consolas, liberation mono;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(10px + 1vmin);
 `
 
 export const OffsetPanel = (props: { lines: string[] }): React.ReactElement => (
