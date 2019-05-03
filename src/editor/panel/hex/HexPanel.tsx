@@ -3,48 +3,27 @@ import { HexCell } from './HexCell'
 import styled from 'styled-components'
 
 const HexContainer = styled.div`
-    display: inline-block
-    vertical-align: top
-    padding: 0 10px
+  display: inline-block;
+  vertical-align: top;
+  padding: 0 0 0 10px;
 `
 
-export const HexPanel = (): React.ReactElement => (
+const HexDivAligned = styled.div`
+  text-align: left;
+`
+
+export const HexPanel = (props: { lines: string[][] }): React.ReactElement => (
   <HexContainer>
-    <div>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-    </div>
-    <div>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-      <HexCell>00</HexCell>
-    </div>
+    {props.lines.map(
+      (line: string[], firstLevel: number): JSX.Element => (
+        <HexDivAligned key={firstLevel}>
+          {line.map(
+            (column: string, secondLevel: number): JSX.Element => (
+              <HexCell key={`${firstLevel}-${secondLevel}`}>{column}</HexCell>
+            )
+          )}
+        </HexDivAligned>
+      )
+    )}
   </HexContainer>
 )

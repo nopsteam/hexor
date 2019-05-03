@@ -3,49 +3,27 @@ import { TextCell } from './TextCell'
 import styled from 'styled-components'
 
 const TextContainer = styled.div`
-    padding: 0 20px 0 5px
-    color: #222
-    display: inline-block
-    vertical-align: top
+  color: #222;
+  display: inline-block;
+  vertical-align: top;
 `
 
-export const TextPanel = (): React.ReactElement => (
+const TextDivAligned = styled.div`
+  text-align: left;
+`
+
+export const TextPanel = (props: { lines: string[][] }): React.ReactElement => (
   <TextContainer>
-    <div>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-    </div>
-    <div>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-      <TextCell>.</TextCell>
-    </div>
+    {props.lines.map(
+      (line: string[], firstLevel: number): JSX.Element => (
+        <TextDivAligned key={firstLevel}>
+          {line.map(
+            (column: string, secondLevel: number): JSX.Element => (
+              <TextCell key={`${firstLevel}-${secondLevel}`}>{column}</TextCell>
+            )
+          )}
+        </TextDivAligned>
+      )
+    )}
   </TextContainer>
 )
