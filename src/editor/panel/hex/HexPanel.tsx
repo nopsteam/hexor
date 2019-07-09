@@ -1,6 +1,7 @@
-import React from 'react'
-import { HexCell } from './HexCell'
+import React, { useRef, useState, useMemo } from 'react'
 import styled from 'styled-components'
+import { ItemSelection } from '../../ItemSelection'
+import { HexGridLines } from './HexGridLines'
 
 const HexContainer = styled.div`
   display: inline-block;
@@ -8,22 +9,19 @@ const HexContainer = styled.div`
   padding: 0 0 0 10px;
 `
 
-const HexDivAligned = styled.div`
-  text-align: left;
-`
+export interface IHexPanelExtraProps {
+  lines: ItemSelection<string>[][] 
+  notifyChange: (index: number) => void
+}
 
-export const HexPanel = (props: { lines: string[][] }): React.ReactElement => (
-  <HexContainer>
-    {props.lines.map(
-      (line: string[], firstLevel: number): JSX.Element => (
-        <HexDivAligned key={firstLevel}>
-          {line.map(
-            (column: string, secondLevel: number): JSX.Element => (
-              <HexCell key={`${firstLevel}-${secondLevel}`}>{column}</HexCell>
-            )
-          )}
-        </HexDivAligned>
-      )
-    )}
-  </HexContainer>
-)
+export const HexPanel = ({ lines, notifyChange }: IHexPanelExtraProps): React.ReactElement => {
+  let indexer = 0
+
+  const [hex, setHex] = useState<ItemSelection<string>[][]>(lines)
+
+  return (
+    <HexContainer>
+      <HexGridLines hex={hex} notifyChange={notifyChange}></HexGridLines>
+    </HexContainer>
+  )
+}
