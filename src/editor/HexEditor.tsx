@@ -8,6 +8,7 @@ import {
 import styled from 'styled-components'
 import hexThing from './neo.arch.dialog'
 import logo from '../pirate_flag.png'
+import { ItemSelection } from './ItemSelection';
 
 const HexEditorContainer = styled.div`
   background: #252526
@@ -44,10 +45,13 @@ export const HexEditor = (): React.ReactElement => {
     hexThing
   )
 
+  const piecesOfHex = hexLines.map(lines => ItemSelection.withMany<string>(lines))
+  const piecesOfAscii = asciiRepresentationOfHexLines.map(lines => ItemSelection.withMany<string>(lines))
+
   return (
     <HexEditorContainer>
       <OffsetPanel lines={offsetLines} />
-      <HexPanel lines={hexLines} />
+      <HexPanel lines={piecesOfHex} notifyChange={x => console.log(x)} />
       <TextPanel lines={asciiRepresentationOfHexLines} />
       <Logo>
         <LogoImg src={logo} alt="hexor" />
